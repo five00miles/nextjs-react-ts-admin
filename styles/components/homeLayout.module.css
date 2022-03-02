@@ -1,0 +1,28 @@
+.home-layout-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.home-layout-wrapper .logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.site-header {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.trigger {
+    padding: 0 24px;
+    font-size: 18px;
+    line-height: 64px;
+    transition: color 0.3s;
+}
+.trigger:hover {
+    color: #1890ff;
+}
