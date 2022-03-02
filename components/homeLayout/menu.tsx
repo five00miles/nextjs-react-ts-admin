@@ -5,12 +5,21 @@ import { Menu } from 'antd';
 
 import menus from "@/config/menus"
 
+import * as Icon from '@ant-design/icons'
+
 const { SubMenu } = Menu;
+
+function iconBC(name:any){
+    console.log('name',name)
+    return React.createElement(Icon[name]);
+}
+
+
 
 function createMenu(menu: any) {
     if (!menu.subs || menu.subs.length === 0) {
         return (
-            <Menu.Item key={menu.key}>
+            <Menu.Item icon={iconBC(menu.icon)} key={menu.key}>
                 <Link href={menu.key} passHref>
                     {menu.title}
                 </Link>
@@ -21,7 +30,7 @@ function createMenu(menu: any) {
             <SubMenu key={menu.key} title={menu.title}>
                 {menu.subs.map((sub: any) => {
                     return (
-                        <Menu.Item key={sub.key}>
+                        <Menu.Item icon={iconBC(menu.icon)} key={sub.key}>
                             <Link href={sub.key} passHref>
                                 {sub.title}
                             </Link>

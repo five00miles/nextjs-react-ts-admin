@@ -4,7 +4,7 @@ const menus = [
     {
         key: '/home/ui',
         title: 'UI',
-        icon: 'scan',
+        icon: 'ApartmentOutlined',
         subs: [
             { key: '/home/ui/buttons', title: '按钮' },
             { key: '/home/ui/icons', title: '图标' },
@@ -12,17 +12,17 @@ const menus = [
             { key: '/home/ui/modals', title: '对话框' },
             { key: '/home/ui/notifications', title: '通知提醒框' },
             { key: '/home/ui/tabs', title: '标签页' },
+            { key: '/home/ui/drags', title: '拖拽' },
+            { key: '/home/ui/list', title: '长列表' },
+            { key: '/home/ui/grid', title: '栅格' },
             { key: '/home/ui/banners', title: '轮播图' },
             { key: '/home/ui/wysiwyg', title: '富文本' },
-            { key: '/home/ui/drags', title: '拖拽' },
-            { key: '/home/ui/gallery', title: '画廊' },
-            { key: '/home/ui/map', title: '地图' },
         ],
     },
     {
         key: '/home/animation',
         title: '动画',
-        icon: 'rocket',
+        icon: 'ApartmentOutlined',
         subs: [
             {
                 key: '/home/animation/basicAnimations',
@@ -39,7 +39,7 @@ const menus = [
     {
         key: '/home/table',
         title: '表格',
-        icon: 'copy',
+        icon: 'ApartmentOutlined',
         subs: [
             { key: '/home/table/basicTable', title: '基础表格' },
             { key: '/home/table/advancedTable', title: '高级表格' },
@@ -62,7 +62,7 @@ const menus = [
     {
         key: '/subs4',
         title: '页面',
-        icon: 'switcher',
+        icon: 'ApartmentOutlined',
         subs: [
             { key: '/login', title: '登录' },
             { key: '/404', title: '404' },
@@ -71,7 +71,7 @@ const menus = [
     {
         key: '/home/auth',
         title: '权限管理',
-        icon: 'safety',
+        icon: 'ApartmentOutlined',
         subs: [
             { key: '/home/auth/basic', title: '基础演示' },
             {
@@ -85,13 +85,13 @@ const menus = [
     {
         key: '/home/cssModule',
         title: 'cssModule',
-        icon: 'star',
+        icon: 'ApartmentOutlined',
         component: 'Cssmodule',
     },
     {
         key: '/home/extension',
         title: '功能扩展',
-        icon: 'bars',
+        icon: 'ApartmentOutlined',
         subs: [
             {
                 key: '/home/extension/queryParams',

@@ -4,8 +4,17 @@ import { Row, Col, Card } from 'antd';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw } from 'draft-js';
 
+
 const Editor: any = dynamic(
     () => import("react-draft-wysiwyg").then((module) => module.Editor),
+    { ssr: false }
+);
+const DraftHtml: any = dynamic(
+    () => import("./draftHtml"),
+    { ssr: false }
+);
+const DraftToMarkdown: any = dynamic(
+    () => import("./draftToMarkdown"),
     { ssr: false }
 );
 
@@ -48,11 +57,6 @@ const rawContentState = {
     ],
 };
 
-const Demoaaa: any = dynamic(
-    () => import("draftjs-to-html").then((module) => module.default),
-    { ssr: false }
-)
-
 export default class Wysiwyg extends Component<any, any> {
 
     constructor(props: any) {
@@ -70,15 +74,7 @@ export default class Wysiwyg extends Component<any, any> {
         this.imageUploadCallBack = this.imageUploadCallBack.bind(this)
     }
 
-    // draftToHtml(...args: any[]): any {
-    //     return dynamic(
-    //         () => import("draftjs-to-html").then((module) => module.default(...args)),
-    //         { ssr: false }
-    //     )
-    // }
-
     onEditorChange(editorContent: any) {
-        console.log('editorContent', editorContent)
         this.setState({
             editorContent,
         });
@@ -188,15 +184,13 @@ export default class Wysiwyg extends Component<any, any> {
                     </Col>
                     <Col className="gutter-row" md={8}>
                         <Card title="同步转换HTML" bordered={false}>
-                            <Demoaaa />
-                            <h1>12312</h1>
-                            {/* <pre>{this.draftToHtml(editorContent)}</pre> */}
+                            <pre><DraftHtml editorContent={editorContent} /></pre>
                         </Card>
                     </Col>
                     <Col className="gutter-row" md={8}>
                         <Card title="同步转换MarkDown" bordered={false}>
                             <pre style={{ whiteSpace: 'pre-wrap' }}>
-                                {/* {draftToMarkdown(editorContent)} */}
+                                <DraftToMarkdown editorContent={editorContent} />
                             </pre>
                         </Card>
                     </Col>
