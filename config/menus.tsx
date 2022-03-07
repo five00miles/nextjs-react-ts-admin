@@ -1,12 +1,14 @@
+import {ApartmentOutlined} from '@ant-design/icons'
+
 const menus = [
     // 菜单相关路由
-    { key: '/home', title: '首页', icon: 'mobile' },
+    { key: '/home', title: '首页', icon: <ApartmentOutlined /> },
     {
         key: '/home/ui',
         title: 'UI',
-        icon: 'ApartmentOutlined',
+        icon: <ApartmentOutlined />,
         subs: [
-            { key: '/home/ui/buttons', title: '按钮' },
+            { key: '/home/ui/buttons', title: '按钮',icon: <ApartmentOutlined />, },
             { key: '/home/ui/icons', title: '图标' },
             { key: '/home/ui/spins', title: '加载中' },
             { key: '/home/ui/modals', title: '对话框' },
@@ -22,7 +24,7 @@ const menus = [
     {
         key: '/home/animation',
         title: '动画',
-        icon: 'ApartmentOutlined',
+        icon: <ApartmentOutlined />,
         subs: [
             {
                 key: '/home/animation/basicAnimations',
@@ -39,7 +41,7 @@ const menus = [
     {
         key: '/home/table',
         title: '表格',
-        icon: 'ApartmentOutlined',
+        icon: <ApartmentOutlined />,
         subs: [
             { key: '/home/table/basicTable', title: '基础表格' },
             { key: '/home/table/advancedTable', title: '高级表格' },
@@ -53,7 +55,7 @@ const menus = [
     {
         key: '/home/chart',
         title: '图表',
-        icon: 'area-chart',
+        icon: <ApartmentOutlined />,
         subs: [
             { key: '/home/chart/echarts', title: 'echarts' },
             { key: '/home/chart/recharts', title: 'recharts' },
@@ -62,7 +64,7 @@ const menus = [
     {
         key: '/subs4',
         title: '页面',
-        icon: 'ApartmentOutlined',
+        icon: <ApartmentOutlined />,
         subs: [
             { key: '/login', title: '登录' },
             { key: '/404', title: '404' },
@@ -71,7 +73,7 @@ const menus = [
     {
         key: '/home/auth',
         title: '权限管理',
-        icon: 'ApartmentOutlined',
+        icon: <ApartmentOutlined />,
         subs: [
             { key: '/home/auth/basic', title: '基础演示' },
             {
@@ -85,13 +87,13 @@ const menus = [
     {
         key: '/home/cssModule',
         title: 'cssModule',
-        icon: 'ApartmentOutlined',
+        icon: <ApartmentOutlined />,
         component: 'Cssmodule',
     },
     {
         key: '/home/extension',
         title: '功能扩展',
-        icon: 'ApartmentOutlined',
+        icon: <ApartmentOutlined />,
         subs: [
             {
                 key: '/home/extension/queryParams',

@@ -5,21 +5,13 @@ import { Menu } from 'antd';
 
 import menus from "@/config/menus"
 
-import * as Icon from '@ant-design/icons'
-
 const { SubMenu } = Menu;
-
-function iconBC(name:any){
-    console.log('name',name)
-    return React.createElement(Icon[name]);
-}
-
 
 
 function createMenu(menu: any) {
     if (!menu.subs || menu.subs.length === 0) {
         return (
-            <Menu.Item icon={iconBC(menu.icon)} key={menu.key}>
+            <Menu.Item icon={menu.icon} key={menu.key}>
                 <Link href={menu.key} passHref>
                     {menu.title}
                 </Link>
@@ -27,10 +19,10 @@ function createMenu(menu: any) {
         )
     } else {
         return (
-            <SubMenu key={menu.key} title={menu.title}>
+            <SubMenu icon={menu.icon} key={menu.key} title={menu.title}>
                 {menu.subs.map((sub: any) => {
                     return (
-                        <Menu.Item icon={iconBC(menu.icon)} key={sub.key}>
+                        <Menu.Item icon={sub.icon} key={sub.key}>
                             <Link href={sub.key} passHref>
                                 {sub.title}
                             </Link>
@@ -77,7 +69,7 @@ export default withRouter(class HomeLayoutMenu extends React.Component<any, any>
     }
     render() {
         return (
-            <Menu theme="dark" mode="inline"  defaultOpenKeys={this.state.defaultOpenKeys} defaultSelectedKeys={this.state.defaultSelectedKeys}>
+            <Menu theme="dark" mode="inline" defaultOpenKeys={this.state.defaultOpenKeys} defaultSelectedKeys={this.state.defaultSelectedKeys}>
                 {
                     menus.map(menu => createMenu(menu))
                 }
