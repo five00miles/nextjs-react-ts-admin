@@ -1,14 +1,24 @@
-import {ApartmentOutlined} from '@ant-design/icons'
+import { ApartmentOutlined } from '@ant-design/icons'
 
 const menus = [
     // 菜单相关路由
     { key: '/home', title: '首页', icon: <ApartmentOutlined /> },
     {
+        key: '/home/nested', title: '路由嵌套', icon: <ApartmentOutlined />,
+        subs: [
+            {
+                key: '/home/nested/menu1', title: '菜单1', subs: [
+                    { key: '/home/nested/menu1/menu1_1', title: '菜单1-1' }
+                ]
+            },
+        ]
+    },
+    {
         key: '/home/ui',
         title: 'UI',
         icon: <ApartmentOutlined />,
         subs: [
-            { key: '/home/ui/buttons', title: '按钮',icon: <ApartmentOutlined />, },
+            { key: '/home/ui/buttons', title: '按钮', icon: <ApartmentOutlined />, },
             { key: '/home/ui/icons', title: '图标' },
             { key: '/home/ui/spins', title: '加载中' },
             { key: '/home/ui/modals', title: '对话框' },

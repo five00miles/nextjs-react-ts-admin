@@ -7,6 +7,8 @@ import {
 import Menu from './menu'
 import HomeLayoutHeader from './header'
 
+import Breadcrumb from '@/components/Breadcrumb/index'
+
 import style from '@/styles/components/homeLayout.module.css'
 
 const { Header, Sider, Content } = Layout;
@@ -38,10 +40,13 @@ class HomeLayout extends React.Component {
                 </Sider>
                 <Layout className="site-layout" style={{ marginLeft: this.state.collapsed ? 80 : 200 }}>
                     <Header className={style['site-header']}>
-                        {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                            className: `${style['trigger']} point`,
-                            onClick: this.toggle,
-                        })}
+                        <div className={style['site-header--left']}>
+                            {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                                className: `${style['trigger']} point`,
+                                onClick: this.toggle,
+                            })}
+                            <Breadcrumb />
+                        </div>
                         <HomeLayoutHeader />
                     </Header>
                     <Content

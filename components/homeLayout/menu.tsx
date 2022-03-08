@@ -5,34 +5,29 @@ import { Menu } from 'antd';
 
 import menus from "@/config/menus"
 
-const { SubMenu } = Menu;
+const { SubMenu, Item } = Menu;
 
-
-function createMenu(menu: any) {
-    if (!menu.subs || menu.subs.length === 0) {
-        return (
-            <Menu.Item icon={menu.icon} key={menu.key}>
-                <Link href={menu.key} passHref>
-                    {menu.title}
-                </Link>
-            </Menu.Item>
-        )
-    } else {
-        return (
-            <SubMenu icon={menu.icon} key={menu.key} title={menu.title}>
-                {menu.subs.map((sub: any) => {
-                    return (
-                        <Menu.Item icon={sub.icon} key={sub.key}>
-                            <Link href={sub.key} passHref>
-                                {sub.title}
-                            </Link>
-                        </Menu.Item>
-                    )
-                })}
-            </SubMenu>
-        )
-    }
+function renderMenuItem(item: any) {
+    return (
+        <Item key={item.key} icon={item.icon}>
+            <Link href={item.key} passHref>
+                {item.title}
+            </Link>
+        </Item>
+    )
 }
+
+function renderSubMenu(item: any) {
+    return (
+        <SubMenu
+            key={item.key}
+            title={item.title}
+            icon={item.icon}
+        >
+            {item.subs.map((sub: any) => (sub.subs ? renderSubMenu(sub) : renderMenuItem(sub)))}
+        </SubMenu>
+    );
+};
 
 export default withRouter(class HomeLayoutMenu extends React.Component<any, any> {
     constructor(props: any) {
@@ -56,14 +51,8 @@ export default withRouter(class HomeLayoutMenu extends React.Component<any, any>
             }
             return tempKeys;
         };
-        const getOpenAndSelectKeys = () => {
-            return {
-                openKeys: recombineOpenKeys(this.props.router.pathname.match(/[/](\w+)/gi) || []),
-                selectedKey: location.pathname,
-            };
-        };
         this.setState({
-            defaultOpenKeys: recombineOpenKeys(this.props.router.pathname.match(/[/](\w+)/gi) || []),
+            defaultOpenKeys: recombineOpenKeys(this.props.router.pathname.match(/\/(\w+)/gi) || []),
             defaultSelectedKeys: [this.props.router.pathname],
         })
     }
@@ -71,7 +60,7 @@ export default withRouter(class HomeLayoutMenu extends React.Component<any, any>
         return (
             <Menu theme="dark" mode="inline" defaultOpenKeys={this.state.defaultOpenKeys} defaultSelectedKeys={this.state.defaultSelectedKeys}>
                 {
-                    menus.map(menu => createMenu(menu))
+                    menus.map(menu => menu.subs ? renderSubMenu(menu) : renderMenuItem(menu))
                 }
             </Menu>
         )
